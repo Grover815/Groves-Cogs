@@ -1,0 +1,10 @@
+{
+    "AUTHOR" : "Grover815",
+    "INSTALL_MSG" : "Please setup the channel you would like to make annonymous with .share_on",
+    "NAME" : "Anon",
+    "SHORT" : "Make your chat anonymous",
+    "DESCRIPTION" : "Make chat messages anonymous by having the bot send them instead. Best to use via DM's",
+    "TAGS" : ["anonymous", "share", "messages", "posts"],
+    "REQUIREMENTS" : [],
+    "DISABLED" : false
+}
