@@ -1,8 +1,8 @@
-from redbot.core import commands
+from redbot.core import commands, Config, checks
 import discord
 from discord.client import Client
 import os
-from redbot.core import Config
+
 
 class Anon(commands.Cog):
     
@@ -20,6 +20,7 @@ class Anon(commands.Cog):
 
 
     @commands.command()
+    @checks.is_owner()
     async def share_off(self, ctx):
         """Disable Anon in the channel"""
         channel = ctx.message.channel
@@ -35,6 +36,7 @@ class Anon(commands.Cog):
 
 
     @commands.command()
+    @checks.is_owner()
     async def share_on(self, ctx):
         """Enable Anon in one channel"""
         channel = ctx.message.channel
@@ -106,5 +108,7 @@ class Anon(commands.Cog):
     			em.set_image(url=msg.attachments[0].url)
     		return em
 
+
 def setup(bot):
 	bot.add_cog(Anon(bot))
+
