@@ -4,7 +4,7 @@ Cogs for Discord Red Bot
 ## Cogs
 - **Anon** - Let the bot send messages for you.
 
-##Credits
+## Credits
 
 Twentysix26 and everyone else who has contributed to Red Bot.
 Redjumpman, for this neat readme file template.
