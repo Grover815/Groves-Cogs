@@ -145,7 +145,7 @@ class KarmaMarket(commands.Cog):
         reply = await self._insert(ctx,user,call,date,bet,"put")
         await ctx.send(reply)
 
-    async def _gen_code(self,ctx):
+    async def _gen_code(self):
     	taken_random = await self.betsConf.codes()
     	ranStr = await self._random_string()
     	if ranStr in taken_random:
@@ -178,5 +178,5 @@ class KarmaMarket(commands.Cog):
                 if call > curr_karma and case == "put":
                     return "Called karma is greater than current karma. Try using a call instead"
                 else:
-               	    await self.betsConf.custom(BETS_GROUP).set_raw("{0}".format(await self._gen_code(ctx)),value = {'gain':gain, 'loss':bet, 'pred':str(pred),"author":ctx.author.id, "user": user.id, "call": call, "type": case})
+               	    await self.betsConf.custom(BETS_GROUP).set_raw("{0}".format(await self._gen_code()),value = {'gain':gain, 'loss':bet, 'pred':str(pred),"author":ctx.author.id, "user": user.id, "call": call, "type": case})
                	    return "Success! Let the odds be ever in your favor."
