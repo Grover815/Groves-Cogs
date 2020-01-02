@@ -42,6 +42,17 @@ class KarmaMarket(commands.Cog):
         reply = "Reset bet configs."
         await ctx.send(reply)
 
+    @bets.command(name="list")
+    async def bets_list(self, ctx:commands.Context):
+    	bet = await self.betsConf.custom(BETS_GROUP).get_raw()
+    	if len(bet) != 0:
+    		for x in range(0,len(bet)):
+    			userName =  self.bot.get_user(int(bet[str(x)]["user"]))
+    			authorName = self.bot.get_user(int(bet[str(x)]["author"]))
+    			await ctx.send("{0}: {1} bet {2} would reach {3} karma by {4}".format(str(x),authorName,userName,bet[str(x)]["call"],bet[str(x)]["pred"]))
+    	else:
+    		await ctx.send("No active bets.")
+
     async def _check_bets(self):
         while self is self.bot.get_cog("KarmaMarket"):
             now = datetime.strptime(datetime.now().strftime(date_format), date_format)
