@@ -39,7 +39,15 @@ class KarmaMarket(commands.Cog):
     @checks.admin()
     async def bets_reset(self, ctx: commands.Context):
         await self.betsConf.custom(BETS_GROUP).clear()
-        await ctx.send("Complete.")
+        reply = "Reset bet configs."
+        await ctx.send(reply)
+
+    @bets.command(name="delete")
+    @checks.admin()
+    async def bets_delete(self, ctx:commands.Context, index:int):
+    	await self.betsConf.custom(BETS_GROUP).clear_raw(index)
+    	reply = "Deleted bet {0}".format(index)
+    	await ctx.send(reply)
 
     async def _check_bets(self):
         while self is self.bot.get_cog("KarmaMarket"):
