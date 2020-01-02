@@ -62,6 +62,7 @@ class KarmaMarket(commands.Cog):
     		await ctx.send("No active bets.")
 
     @bets.command(name="delete")
+    @checks.admin()
     async def bets_delete(self,ctx:commands.Context, code):
         """Delete an active bet.
 
@@ -123,7 +124,7 @@ class KarmaMarket(commands.Cog):
 
     async def _random_string(self,size=6, chars=string.ascii_uppercase + string.digits):
        return ''.join(random.choice(chars) for i in range(size))
-       
+
     @commands.command()
     async def call(self, ctx: commands.Context, user:discord.Member, call: int, date, bet: int):
         """Bet on a users karma going up
