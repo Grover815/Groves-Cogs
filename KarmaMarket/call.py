@@ -38,12 +38,16 @@ class KarmaMarket(commands.Cog):
     @bets.command(name="reset")
     @checks.admin()
     async def bets_reset(self, ctx: commands.Context):
+        """Reset bets group in config file
+        """
         await self.betsConf.custom(BETS_GROUP).clear()
         reply = "Reset bet configs."
         await ctx.send(reply)
 
     @bets.command(name="list")
     async def bets_list(self, ctx:commands.Context):
+    	"""List all active bets
+    	"""
     	bet = await self.betsConf.custom(BETS_GROUP).get_raw()
     	if len(bet) != 0:
     		for x in range(0,len(bet)):
