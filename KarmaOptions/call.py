@@ -1,7 +1,5 @@
 import discord
 import asyncio
-from discord.client import Client
-from collections import namedtuple
 from redbot.core import commands, Config, checks
 from redbot.core.commands import Context, Cog
 from redbot.core.bot import Red
@@ -58,7 +56,7 @@ class KarmaOptions(commands.Cog):
     			userName =  self.bot.get_user(int(bet[betCodes[x]]["user"]))
     			authorName = self.bot.get_user(int(bet[betCodes[x]]["author"]))
     			pred = bet[betCodes[x]]["pred"]
-    			await ctx.send("{0}: {1} bet {2} karma that {3} would reach {4} karma by {5}".format(betCodes[x],authorName.name,bet[betCodes[x]]["loss"],userName.name,bet[betCodes[x]]["call"],pred.replace("00:00:00","")))
+    			await ctx.send("{0}: {1} bet {2} karma that {3} would pass {4} karma by {5}".format(betCodes[x],authorName.name,bet[betCodes[x]]["loss"],userName.name,bet[betCodes[x]]["call"],pred.replace("00:00:00","")))
     	else:
     		await ctx.send("No active bets.")
 
@@ -152,7 +150,6 @@ class KarmaOptions(commands.Cog):
     	if ranStr in taken_random:
     		await self._gen_code(self)
     	else:
-    		taken_random_list = []
     		global_group = self.betsConf
     		async with global_group.codes() as codes:
     				    codes.append(ranStr)
