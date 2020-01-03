@@ -57,7 +57,7 @@ class KarmaMarket(commands.Cog):
     		for x in range(0,len(betCodes)):
     			userName =  self.bot.get_user(int(bet[betCodes[x]]["user"]))
     			authorName = self.bot.get_user(int(bet[betCodes[x]]["author"]))
-    			await ctx.send("{0}: {1} bet {2} would reach {3} karma by {4}".format(betCodes[x],authorName,userName,bet[betCodes[x]]["call"],bet[betCodes[x]]["pred"]))
+    			await ctx.send("{0}: {1} bet {2} karma that {3} would reach {4} karma by {5}".format(betCodes[x],authorName.name,bet[betCodes[x]]["loss"],userName.name,bet[betCodes[x]]["call"],bet[betCodes[x]]["pred"]))
     	else:
     		await ctx.send("No active bets.")
 
@@ -160,7 +160,7 @@ class KarmaMarket(commands.Cog):
     async def _insert(self, ctx: commands.Context, user:discord.Member, call: int, date, bet: int, case):
         authorK = await ReactKarma.karmaConf.user(ctx.author).karma()
         if bet > authorK or bet <= 0:
-            return 'Bet invalid.'
+            return 'Bet is too high'
         else:
             now = datetime.strptime(datetime.now().strftime(date_format), date_format)
             pred = datetime.strptime(date, date_format)
@@ -179,4 +179,4 @@ class KarmaMarket(commands.Cog):
                     return "Called karma is greater than current karma. Try using a call instead"
                 else:
                	    await self.betsConf.custom(BETS_GROUP).set_raw("{0}".format(await self._gen_code()),value = {'gain':gain, 'loss':bet, 'pred':str(pred),"author":ctx.author.id, "user": user.id, "call": call, "type": case})
-               	    return "Success! Let the odds be ever in your favor."
+               	    return "Success! May the odds be ever in your favor."
