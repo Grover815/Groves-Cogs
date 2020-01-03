@@ -20,7 +20,7 @@ BETS_GROUP = "BETS"
 karmaID = 2617433287
 karmaClass = ReactKarma()
 
-class KarmaMarket(commands.Cog):
+class KarmaOptions(commands.Cog):
 
     def __init__(self, bot:Red):
         self.bot = bot
@@ -30,7 +30,7 @@ class KarmaMarket(commands.Cog):
         self.betsConf.init_custom(BETS_GROUP, 2)
         self.betsConf.register_global(**{"codes":[]})
 
-    ###				KarmaMarket functions			 ###
+    ###				KarmaOptions functions			 ###
 
     @commands.group()
     async def bets(self, ctx: Context):
@@ -80,7 +80,7 @@ class KarmaMarket(commands.Cog):
         await self.betsConf.custom(BETS_GROUP).clear_raw(code)
 
     async def _check_bets(self):
-        while self is self.bot.get_cog("KarmaMarket"):
+        while self is self.bot.get_cog("KarmaOptions"):
             now = datetime.strptime(datetime.now().strftime(date_format), date_format)
             userBets = await self.betsConf.custom(BETS_GROUP).get_raw()
             betCodes = await self.betsConf.codes()

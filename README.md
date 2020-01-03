@@ -3,7 +3,7 @@ Cogs for Discord Red Bot
 &nbsp;
 ## Cogs
 - **Anon** - Let the bot send messages for you.
-- **KarmaMarket** - Bet on users ability to get karma
+- **KarmaOptions** - Bet on users ability to get karma
 ## Credits
 
 Twentysix26 and everyone else who has contributed to Red Bot.

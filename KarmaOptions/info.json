@@ -1,7 +1,7 @@
 {
     "AUTHOR" : "Grover815",
-    "INSTALL_MSG" : "Bet. Thanks for installing KarmaMarket",
-    "NAME" : "KarmaMarket",
+    "INSTALL_MSG" : "Bet. Thanks for installing KarmaOptions",
+    "NAME" : "KarmaOptions",
     "SHORT" : "Bet on users karma.",
     "DESCRIPTION" : "Bet when a user will reach a certin karma treshold",
     "TAGS" : ["karma", "share", "bet", "call", "invest"],
