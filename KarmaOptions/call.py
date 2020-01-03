@@ -25,6 +25,7 @@ class KarmaOptions(commands.Cog):
         self.betsConf = Config.get_conf(self, identifier=betsID, force_registration=True)
         ReactKarma.karmaConf = Config.get_conf(karmaClass,identifier=karmaID, force_registration=True)
         ReactKarma.karmaConf.register_user(karma=0)
+        ReactKarma.karmaConf.register_user(betKarma=0)
         self.betsConf.init_custom(BETS_GROUP, 2)
         self.betsConf.register_global(**{"codes":[]})
 
@@ -108,13 +109,17 @@ class KarmaOptions(commands.Cog):
 
     async def _add_karma(self, user: discord.User, amount: int):
         settings = ReactKarma.karmaConf.user(user)
-        karma = await settings.karma()
-        await settings.karma.set(karma + int(amount))
-       
+        totalKarma = await settings.karma()
+        betsKarma = await settings.betKarma()
+        await settings.karma.set(totalKarma + int(amount))
+        await settings.betKarma.set(betsKarma + int(amount))
+
     async def _remove_karma(self,user: discord.User, amount: int):
         settings = ReactKarma.karmaConf.user(user)
-        karma = await settings.karma()
-        await settings.karma.set(karma - int(amount))        
+        totalKarma = await settings.karma()
+        betsKarma = await settings.betKarma()
+        await settings.karma.set(totalKarma - int(amount)) 
+        await settings.betKarma.set(betsKarma - int(amount))  
 
     async def _what_is_options_return(self, karma, date, bet):
         a = karma*2/date
