@@ -57,7 +57,8 @@ class KarmaOptions(commands.Cog):
     		for x in range(0,len(betCodes)):
     			userName =  self.bot.get_user(int(bet[betCodes[x]]["user"]))
     			authorName = self.bot.get_user(int(bet[betCodes[x]]["author"]))
-    			await ctx.send("{0}: {1} bet {2} karma that {3} would reach {4} karma by {5}".format(betCodes[x],authorName.name,bet[betCodes[x]]["loss"],userName.name,bet[betCodes[x]]["call"],bet[betCodes[x]]["pred"]))
+    			pred = bet[betCodes[x]]["pred"]
+    			await ctx.send("{0}: {1} bet {2} karma that {3} would reach {4} karma by {5}".format(betCodes[x],authorName.name,bet[betCodes[x]]["loss"],userName.name,bet[betCodes[x]]["call"],pred.replace("00:00:00","")))
     	else:
     		await ctx.send("No active bets.")
 
