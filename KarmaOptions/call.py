@@ -66,7 +66,7 @@ class KarmaOptions(commands.Cog):
     async def bets_delete(self,ctx:commands.Context, code):
         """Delete an active bet.
 
-        Must use bet code found when bets are lsited"""
+        Must use bet code found when bets are listed"""
         try:
             await self._delete_bet(code)
             await ctx.send("Bet {0} has been removed.".format(code))
