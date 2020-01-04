@@ -39,7 +39,7 @@ class KarmaOptions(commands.Cog):
         pass
 
     @bets.command(name="reset")
-    @checks.admin()
+    @checks.is_owner()
     async def bets_reset(self, ctx: commands.Context, user: discord.User=None):
         """Reset bets group in config file
         """
@@ -68,7 +68,7 @@ class KarmaOptions(commands.Cog):
     		await ctx.send("No active bets.")
 
     @bets.command(name="delete")
-    @checks.admin()
+    @checks.is_owner()
     async def bets_delete(self,ctx:commands.Context, code):
         """Delete an active bet.
 
