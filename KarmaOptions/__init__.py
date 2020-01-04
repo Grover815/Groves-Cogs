@@ -1,5 +1,4 @@
-from .call import KarmaOptions
-import asyncio
+from .call import KarmaOptions, asyncio
 
 def setup(bot):
     n = KarmaOptions(bot)

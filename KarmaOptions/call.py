@@ -40,12 +40,17 @@ class KarmaOptions(commands.Cog):
 
     @bets.command(name="reset")
     @checks.admin()
-    async def bets_reset(self, ctx: commands.Context):
+    async def bets_reset(self, ctx: commands.Context, user: discord.User=None):
         """Reset bets group in config file
         """
-        await self.betsConf.clear_all()
-        reply = "Reset bet configs."
-        await ctx.send(reply)
+        if user == None:
+            await self.betsConf.clear_all()
+            reply = "Reset bet configs."
+            await ctx.send(reply)
+        else:
+            await ReactKarma.karmaConf.user(user).betKarma.set(0)
+            reply = "Bet karma is now 0 for {}".format(user)
+            await ctx.send(reply)
 
     @bets.command(name="list")
     async def bets_list(self, ctx:commands.Context):
